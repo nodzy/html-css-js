@@ -1,7 +1,8 @@
-  *{
-    
-    box-sizing: border-box;
-  }
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
   body {
     font-size: 16px;
@@ -13,13 +14,13 @@
 
   #tall {
     
-    height: 1000px;
+    font-size: 12px;
     background-color: #C0C0C0;
     margin: 10px;
     margin-top: 30px;
     color: black;
-    padding: 40px;
-	overflow: hidden;
+    padding: 20px;
+
     
     
     
@@ -49,8 +50,8 @@
     
   }
   .navbar-brand {
-    padding-top: 30px;
-    padding-bottom: 70px;
+    margin-top: 25px;
+	margin-bottom: 30px;
     
 
 
