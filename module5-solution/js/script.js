@@ -64,7 +64,6 @@ var switchMenuToActive = function () {
 document.addEventListener("DOMContentLoaded", function (event) {
   
 
-
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl, 
@@ -72,11 +71,6 @@ $ajaxUtils.sendGetRequest(
   true);
 });
 // *** finish **
-
-
-
-
-
 
 
 // Builds HTML for the home page based on categories array
