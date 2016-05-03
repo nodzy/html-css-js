@@ -62,13 +62,10 @@ var switchMenuToActive = function () {
 
 // On page load (before images or CSS)
 document.addEventListener("DOMContentLoaded", function (event) {
-  
-
-showLoading("#main-content");
-$ajaxUtils.sendGetRequest(
-  allCategoriesUrl, 
-  buildAndShowHomeHTML, 
-  true);
+	showLoading("#main-content");
+	$ajaxUtils.sendGetRequest(
+    allCategoriesUrl, 
+    buildAndShowHomeHTML);
 });
 // *** finish **
 
@@ -76,19 +73,22 @@ $ajaxUtils.sendGetRequest(
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
-  
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
     function (homeHtml) {   
 	var chosenCategoryShortName = chooseRandomCategory(categories);  
-	var html = homeHtmlUrl;
-    var category_name = "" + chosenCategoryShortName.short_name;
+	var html = homeHtml;
+    var category_name =  "'" + chosenCategoryShortName.short_name + "'";
     var homeHtmlToInsertIntoMainPage = 
     insertProperty(html, "randomCategoryShortName", category_name);
-	insertHtml("#main-content", homeHtml);
+	insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
         },
+		    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+}
 		 
+		 
+
        
 
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
@@ -116,8 +116,7 @@ function buildAndShowHomeHTML (categories) {
       // ....
       
 
-    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
-}
+
 
 
 // Given array of category objects, returns a random category object.
